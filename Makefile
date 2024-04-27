@@ -1,10 +1,10 @@
-NAME = fract-ol
+NAME = fractol
 
 SRCS_DIR = srcs/
 USER = $(shell whoami)
 OS = $(shell uname)
 
-SRCS = test.c
+SRCS = $(SRCS_DIR)/test.c
 
 COMPILER = cc
 OBJS_DIR = objs/
