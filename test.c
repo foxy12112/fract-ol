@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/04/28 06:45:41 by ldick            ###   ########.fr       */
+/*   Created: 2024/04/28 07:26:49 by ldick             #+#    #+#             */
+/*   Updated: 2024/04/28 07:34:51 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#include "main-libs/libs.h"
+#include <stdio.h>
 
-# include "main-libs/libs.h"
-# include <stdio.h>
-# include "MLX42/include/MLX42/MLX42.h"
+int main(int argc, char *argv[])
+{
 
-#endif
+	char *str = "abcdefg111gggg";
+	while(*str)
+	{
+	printf("%d\n", ft_isalpha(*str));
+	str++;
+	}
+}

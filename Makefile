@@ -4,7 +4,7 @@ SRCS_DIR = srcs/
 USER = $(shell whoami)
 OS = $(shell uname)
 
-SRCS = $(SRCS_DIR)/make_window.c
+SRCS = $(SRCS_DIR)make_window.c
 
 COMPILER = cc
 OBJS_DIR = objs/
@@ -24,7 +24,7 @@ all: MLX42 $(NAME)
 
 $(NAME): $(OBJS)
 	@cd main-libs && make --silent
-	@$(COMPILER) $(CFLAGS) -o $(NAME) $(OBJS) ./main-libs/libs.a ./MLX42/build/libmlx42.a $(MLXFLAGS)
+	@$(COMPILER) $(CFLAGS) -o $(NAME) $(OBJS) ./main-libs/libs.a ./MLX42/build/libmlx42.a $(MLX_FLAGS)
 
 MLX42:
 	@if [ ! -d "MLX42" ]; then git clone https://github.com/codam-coding-college/MLX42.git; fi
