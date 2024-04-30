@@ -6,39 +6,52 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:26:30 by ldick             #+#    #+#             */
-/*   Updated: 2024/04/28 07:07:28 by ldick            ###   ########.fr       */
+/*   Updated: 2024/04/30 11:11:04 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+typedef struct mlx_imagee
 {
-	char	*dst;
+	const uint32_t	width;
+	const uint32_t	height;
+	uint8_t*		pixels;
+	mlx_instance_t*	instances;
+	int32_t			count;
+	bool			enabled;
+	void*			context;
+}	mlx_imagee_t;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <memory.h>
+
+static void error(void)
+{
+	puts(mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
 }
 
-int	main(void)
+int32_t	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	// Start mlx
+	mlx_t* mlx = mlx_init(1920, 1080, "Test", true);
+	if (!mlx)
+        error();
 
-	mlx = mlx_init(1920, 1080, "test", 0);
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-	// 		&img.endian);
-	// my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_image_to_window(mlx, img.img, 0, 0);
+	// Create a new image
+	mlx_imagee_t* img = mlx_new_image(mlx, 1080, 512);
+	if (!img)
+		error();
+
+	// Set every pixel to white
+	memset(img->pixels, 255, img->width * img->height * sizeof(int32_t));
+
+	// Display an instance of the image
+	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
+        error();
+
 	mlx_loop(mlx);
 }
