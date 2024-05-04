@@ -6,20 +6,14 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 07:26:49 by ldick             #+#    #+#             */
-/*   Updated: 2024/04/28 07:34:51 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/03 21:10:27 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main-libs/libs.h"
-#include <stdio.h>
+#include "fractol.h"
+#include <complex.h>
 
-int main(int argc, char *argv[])
+int main(void)
 {
-
-	char *str = "abcdefg111gggg";
-	while(*str)
-	{
-	printf("%d\n", ft_isalpha(*str));
-	str++;
-	}
+	printf("%.20f", x+);
 }

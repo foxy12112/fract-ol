@@ -4,7 +4,7 @@ SRCS_DIR = srcs/
 USER = $(shell whoami)
 OS = $(shell uname)
 
-SRCS = $(SRCS_DIR)make_window.c
+SRCS = $(SRCS_DIR)Window/window.c
 
 COMPILER = cc
 OBJS_DIR = objs/
@@ -29,6 +29,13 @@ $(NAME): $(OBJS)
 MLX42:
 	@if [ ! -d "MLX42" ]; then git clone https://github.com/codam-coding-college/MLX42.git; fi
 	@cd MLX42 && cmake -B build && cmake --build build -j4
+
+info-mandelbrot:
+	@echo "instructions:"
+	@echo "currently offering Mandelbrot and Julia"
+	@echo "Mandelbrot default:"
+	@echo "use with: ./a.out Mandelbrot || or ./a.out -m"
+	@echo ""
 
 clean:
 	@cd main-libs && make fclean
