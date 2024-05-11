@@ -4,14 +4,15 @@ SRCS_DIR = srcs/
 USER = $(shell whoami)
 OS = $(shell uname)
 
-SRCS = $(SRCS_DIR)Window/window.c
+SRCS =	srcs/init.c	\
+		srcs/main.c	\
 
 COMPILER = cc
 OBJS_DIR = objs/
 
 OBJS = $(SRCS:.c=.o)
 
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 ifeq ($(OS),Linux)
 	MLX_FLAGS = MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 else ifeq ($(OS),Darwin)
@@ -30,7 +31,7 @@ MLX42:
 	@if [ ! -d "MLX42" ]; then git clone https://github.com/codam-coding-college/MLX42.git; fi
 	@cd MLX42 && cmake -B build && cmake --build build -j4
 
-info-mandelbrot:
+info-m:
 	@echo "instructions:"
 	@echo "currently offering Mandelbrot and Julia"
 	@echo "Mandelbrot default:"
