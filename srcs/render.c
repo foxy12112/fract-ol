@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 17:38:51 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/11 18:26:13 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/12 15:04:23 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void my_pixel_put(int x, int y, t_img *img, int color)
 	int offset;
 
 	offset = (y * img->line_len) + (x * (img->bpp / 8));
+	*(unsigned int *)(img->pixel_ptr + offset) = color;
 }
 
 void handle_pixel(int x, int y, t_fractal *f)
@@ -34,13 +35,15 @@ void handle_pixel(int x, int y, t_fractal *f)
 	while (i < MAX_ITERATIONS)
 	{
 		z = sum_complex(square_complex(z), c);
-		if ((z.x * z.x) + (x.y * z.y) > f->escape_val)
+		if ((z.x * z.x) + (z.y * z.y) > f->escape_val)
 		{
 			color = map(i, BLACK, WHITE, 0, MAX_ITERATIONS);
-			my_pixel_put();
+			mlx_put_pixel(f->img.img_ptr, x, y, color);
 			return ;
 		}
+		i++;
 	}
+	mlx_put_pixel(f->img.img_ptr, x, y, GOLD);
 }
 
 void fractal_render(t_fractal *f)
@@ -54,7 +57,8 @@ void fractal_render(t_fractal *f)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			handle_pixel(x, y, f)
+			handle_pixel(x, y, f);
 		}
 	}
+	mlx_image_to_window(f->mlx_window, f->img.img_ptr, 0, 0);
 }

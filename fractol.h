@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/11 18:23:50 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/12 15:09:42 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_comp
 
 # define WIDTH 800
 # define HIGHT 800
-# define MAX_ITERATIONS 69
+# define MAX_ITERATIONS 500
 
 # define BLACK		0x000000
 # define WHITE		0xFFFFFF
@@ -73,13 +73,13 @@ typedef struct s_comp
 # define INDIGO		0x4B0082
 # define VIOLET		0xEE82EE
 
-
+void data_init(t_fractal *f);
 void	init_fractal(t_fractal *f);
-void handle_pixel(int x, int y, t_fractal *f);
+static void handle_pixel(int x, int y, t_fractal *f);
 void fractal_render(t_fractal *f);
 double map(double unscaled, double new_min, double new_max, double old_min, double old_max);
 t_comp	square_complex(t_comp z);
 t_comp	sum_complex(t_comp z1, t_comp z2);
-
+static void my_pixel_put(int x, int y, t_img *img, int color);
 
 #endif
