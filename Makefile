@@ -8,6 +8,7 @@ SRCS =	srcs/init.c	\
 		srcs/main.c	\
 		srcs/render.c	\
 		srcs/utils.c	\
+		srcs/events.c	
 
 COMPILER = cc
 OBJS_DIR = objs/
@@ -27,18 +28,11 @@ all: MLX42 $(NAME)
 
 $(NAME): $(OBJS)
 	@cd main-libs && make --silent
-	@$(COMPILER) $(CFLAGS) -o $(NAME) $(OBJS) ./main-libs/libs.a ./MLX42/build/libmlx42.a $(MLX_FLAGS)
+	@$(COMPILER) $(CFLAGS) -o $(NAME) $(OBJS) ./main-libs/libs.a ./MLX42/build/libmlx42.a $(MLX_FLAGS) 
 
 MLX42:
 	@if [ ! -d "MLX42" ]; then git clone https://github.com/codam-coding-college/MLX42.git; fi
 	@cd MLX42 && cmake -B build && cmake --build build -j4
-
-info-m:
-	@echo "instructions:"
-	@echo "currently offering Mandelbrot and Julia"
-	@echo "Mandelbrot default:"
-	@echo "use with: ./a.out Mandelbrot || or ./a.out -m"
-	@echo ""
 
 clean:
 	@cd main-libs && make fclean

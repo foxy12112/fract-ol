@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/12 15:09:42 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/13 14:37:46 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string.h>
 # include <math.h>
 # include <errno.h>
+# include <X11/X.h>
 
 typedef struct s_img
 {
@@ -48,7 +49,7 @@ typedef struct s_comp
 
 # define WIDTH 800
 # define HIGHT 800
-# define MAX_ITERATIONS 500
+# define MAX_ITERATIONS 50
 
 # define BLACK		0x000000
 # define WHITE		0xFFFFFF
@@ -81,5 +82,6 @@ double map(double unscaled, double new_min, double new_max, double old_min, doub
 t_comp	square_complex(t_comp z);
 t_comp	sum_complex(t_comp z1, t_comp z2);
 static void my_pixel_put(int x, int y, t_img *img, int color);
+int key_handler(int keysym, t_fractal *f);
 
 #endif
