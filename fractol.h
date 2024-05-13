@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/13 14:37:46 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/13 20:01:20 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ typedef struct s_img
 
 typedef struct s_fractal
 {
-	void	*mlx_hooks;
-	void	*mlx_window;
-	t_img	img;
-	double	escape_val;
+	void		*mlx_hooks;
+	void		*mlx_window;
+	mlx_image_t	*img;
+	double		escape_val;
 }	t_fractal;
 
 typedef struct s_comp
@@ -83,5 +83,6 @@ t_comp	square_complex(t_comp z);
 t_comp	sum_complex(t_comp z1, t_comp z2);
 static void my_pixel_put(int x, int y, t_img *img, int color);
 int key_handler(int keysym, t_fractal *f);
+void event_init(t_fractal *f);
 
 #endif
