@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 17:38:51 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/12 15:04:23 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/14 12:56:02 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void handle_pixel(int x, int y, t_fractal *f)
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = map(x, -2, +2, 0, WIDTH);
-	c.y = map(y, +2, -2, 0, HIGHT);
-	while (i < MAX_ITERATIONS)
+	c.x = (map(x, -2, +2, 0, WIDTH) * f->zoom) + f->shift_x;
+	c.y = (map(y, +2, -2, 0, HIGHT) * f->zoom) + f->shift_y;
+	while (i < f->max_iterations)
 	{
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > f->escape_val)
 		{
-			color = map(i, BLACK, WHITE, 0, MAX_ITERATIONS);
+			color = map(i, BLACK, WHITE, 0, f->max_iterations);
 			mlx_put_pixel(f->img.img_ptr, x, y, color);
 			return ;
 		}
@@ -60,5 +60,4 @@ void fractal_render(t_fractal *f)
 			handle_pixel(x, y, f);
 		}
 	}
-	mlx_image_to_window(f->mlx_window, f->img.img_ptr, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/13 20:01:20 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/14 14:18:51 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <string.h>
 # include <math.h>
 # include <errno.h>
-# include <X11/X.h>
 
 typedef struct s_img
 {
@@ -37,8 +36,12 @@ typedef struct s_fractal
 {
 	void		*mlx_hooks;
 	void		*mlx_window;
-	mlx_image_t	*img;
+	t_img		img;
 	double		escape_val;
+	double		shift_x;
+	double		shift_y;
+	double		zoom;
+	int			max_iterations;
 }	t_fractal;
 
 typedef struct s_comp
@@ -49,7 +52,10 @@ typedef struct s_comp
 
 # define WIDTH 800
 # define HIGHT 800
-# define MAX_ITERATIONS 50
+# define DEFAULT_ITERATIONS 50
+# define ZOOM 1
+# define MOUSE_W_UP 4
+# define MOUSE_W_DOWN 5
 
 # define BLACK		0x000000
 # define WHITE		0xFFFFFF
@@ -84,5 +90,8 @@ t_comp	sum_complex(t_comp z1, t_comp z2);
 static void my_pixel_put(int x, int y, t_img *img, int color);
 int key_handler(int keysym, t_fractal *f);
 void event_init(t_fractal *f);
+void my_key_handler(mlx_key_data_t mkd, void *data);
+void	my_scroll_func(double xdelta, double ydelta, void *param);
+
 
 #endif
