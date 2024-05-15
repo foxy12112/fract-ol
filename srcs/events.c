@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:17:43 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/14 14:38:17 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/15 13:37:47 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	my_key_handler(mlx_key_data_t mkd, void *data)
 		f->max_iterations += 10;
 	if (mkd.key == MLX_KEY_KP_SUBTRACT)
 		f->max_iterations -= 10;
-	
 	fractal_render(f);
 }
 
@@ -50,4 +49,9 @@ void	my_scroll_func(double xdelta, double ydelta, void *param)
 	if (ydelta < 0)
 		f->zoom *= 0.9;
 	fractal_render(f);
+}
+
+void	leakcheck(void)
+{
+	system("leaks fractol");
 }

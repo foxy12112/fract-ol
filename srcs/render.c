@@ -6,19 +6,11 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 17:38:51 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/14 12:56:02 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/15 15:14:08 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-
-static void my_pixel_put(int x, int y, t_img *img, int color)
-{
-	int offset;
-
-	offset = (y * img->line_len) + (x * (img->bpp / 8));
-	*(unsigned int *)(img->pixel_ptr + offset) = color;
-}
 
 void handle_pixel(int x, int y, t_fractal *f)
 {
@@ -28,10 +20,11 @@ void handle_pixel(int x, int y, t_fractal *f)
 	int		color;
 
 	i = 0;
-	z.x = 0.0;
-	z.y = 0.0;
-	c.x = (map(x, -2, +2, 0, WIDTH) * f->zoom) + f->shift_x;
-	c.y = (map(y, +2, -2, 0, HIGHT) * f->zoom) + f->shift_y;
+	z.x = (map(x, -2, +2, 0, WIDTH) * f->zoom) + f->shift_x;
+	z.y = (map(y, +2, -2, 0, HIGHT) * f->zoom) + f->shift_y;
+	
+	julia(&z, &c, f);
+	
 	while (i < f->max_iterations)
 	{
 		z = sum_complex(square_complex(z), c);
@@ -59,5 +52,19 @@ void fractal_render(t_fractal *f)
 		{
 			handle_pixel(x, y, f);
 		}
+	}
+}
+
+void julia(t_comp *z, t_comp *c, t_fractal *f)
+{
+	if (!ft_strcmp(f->name, "Julia"))
+	{
+		c->x = f->julia_x;
+		c->y = f->julia_y;
+	}
+	else
+	{
+		c->x = z->x;
+		c->y = z->y;
 	}
 }

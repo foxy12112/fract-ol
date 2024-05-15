@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/14 14:18:51 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/15 15:12:46 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_img
 
 typedef struct s_fractal
 {
+	char		*name;
 	void		*mlx_hooks;
 	void		*mlx_window;
 	t_img		img;
@@ -42,6 +43,8 @@ typedef struct s_fractal
 	double		shift_y;
 	double		zoom;
 	int			max_iterations;
+	double		julia_x;
+	double		julia_y;
 }	t_fractal;
 
 typedef struct s_comp
@@ -56,6 +59,8 @@ typedef struct s_comp
 # define ZOOM 1
 # define MOUSE_W_UP 4
 # define MOUSE_W_DOWN 5
+# define MANDELBROT "Mandelbrot"
+# define JULIA "Julia"
 
 # define BLACK		0x000000
 # define WHITE		0xFFFFFF
@@ -92,6 +97,10 @@ int key_handler(int keysym, t_fractal *f);
 void event_init(t_fractal *f);
 void my_key_handler(mlx_key_data_t mkd, void *data);
 void	my_scroll_func(double xdelta, double ydelta, void *param);
+void	leakcheck(void);
+void	fancy_name_maker(t_fractal *f);
+void make_mandel(void);
+void julia(t_comp *z, t_comp *c, t_fractal *f);
 
 
 #endif
