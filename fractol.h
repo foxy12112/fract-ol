@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/15 15:12:46 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/16 14:39:06 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ typedef struct s_comp
 # define VIOLET		0xEE82EE
 
 void data_init(t_fractal *f);
-void	init_fractal(t_fractal *f);
-static void handle_pixel(int x, int y, t_fractal *f);
+static void Mandelbrot(int x, int y, t_fractal *f);
 void fractal_render(t_fractal *f);
 double map(double unscaled, double new_min, double new_max, double old_min, double old_max);
 t_comp	square_complex(t_comp z);
@@ -100,7 +99,7 @@ void	my_scroll_func(double xdelta, double ydelta, void *param);
 void	leakcheck(void);
 void	fancy_name_maker(t_fractal *f);
 void make_mandel(void);
-void julia(t_comp *z, t_comp *c, t_fractal *f);
-
+void	Julia(int x, int y, t_fractal *f);
+void	init_fractal(t_fractal *f);
 
 #endif
