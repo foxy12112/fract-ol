@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:26:30 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/17 14:54:19 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/17 16:59:35 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,10 @@ void	init_fractal(t_fractal *f)
 		return ;
 	mlx_image_to_window(f->mlx_window, f->img.img_ptr, 0, 0);
 	data_init(f);
+}
+
+void	julia_base_init(t_fractal *f)
+{
+	f->julia_x = -0.7269;
+	f->julia_y = 0.1889;
 }

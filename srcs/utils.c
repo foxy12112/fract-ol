@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 17:44:11 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/17 15:36:23 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/17 16:56:11 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	info_message(char **argv)
 	ft_printf("Usage: %s [OPTIONS]...\n", argv[0]);
 	ft_printf("\nOptions:\n");
 	ft_printf("  -j,   Generate Julia fractal.\n");
+	ft_printf("  you can specify the julia set using 2 more arguments,");
+	ft_printf("  only works for julia\n\n example: ./fractol -j 0.159 -0.654");
 	ft_printf("  -m,   Generate Mandelbrot fractal.\n");
 	ft_printf("  -b,   Generate an upside down burning ship fractal.\n\n");
 	exit(EXIT_FAILURE);

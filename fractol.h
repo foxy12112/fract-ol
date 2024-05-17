@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/17 15:14:16 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/17 16:59:45 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ typedef struct s_comp
 # define ZOOM 1
 # define MOUSE_W_UP 4
 # define MOUSE_W_DOWN 5
-# define MANDELBROT "Mandelbrot"
-# define JULIA "Julia"
-
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
@@ -86,25 +83,33 @@ typedef struct s_comp
 # define INDIGO 0x4B0082
 # define VIOLET 0xEE82EE
 
-void		data_init(t_fractal *f);
+// fractal sets
+void		up_down_burning_ship(int x, int y, t_fractal *f);
 static void	mandelbrot(int x, int y, t_fractal *f);
-void		fractal_render(t_fractal *f);
-double		map(double unscaled, double new_min, double new_max,
-				double old_max);
+void		julia(int x, int y, t_fractal *f);
+
+// initialization
+void		data_init(t_fractal *f);
+void		z_and_y_init(t_comp *z);
+void		init_fractal(t_fractal *f);
+void		fancy_name_maker(t_fractal *f);
+void		event_init(t_fractal *f);
+void	julia_base_init(t_fractal *f);
+
+//math
 t_comp		square_complex(t_comp z);
 t_comp		sum_complex(t_comp z1, t_comp z2);
-static void	my_pixel_put(int x, int y, t_img *img, int color);
-int			key_handler(int keysym, t_fractal *f);
-void		event_init(t_fractal *f);
-void		my_key_handler(mlx_key_data_t mkd, void *data);
+double		map(double unscaled, double new_min, double new_max,
+				double old_max);
+
+//events
 void		my_scroll_func(double xdelta, double ydelta, void *param);
+void		my_key_handler(mlx_key_data_t mkd, void *data);
+
+//rendering
+void		fractal_render(t_fractal *f);
+
 void		leakcheck(void);
-void		fancy_name_maker(t_fractal *f);
-void		make_mandel(void);
-void		julia(int x, int y, t_fractal *f);
-void		init_fractal(t_fractal *f);
 void		info_message(char **argv);
-void		up_down_burning_ship(int x, int y, t_fractal *f);
-void		z_and_y_init(t_comp *z);
 
 #endif
