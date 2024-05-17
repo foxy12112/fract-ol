@@ -6,13 +6,13 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:26:30 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/16 13:45:06 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/17 14:54:19 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void data_init(t_fractal *f)
+void	data_init(t_fractal *f)
 {
 	f->escape_val = 4;
 	f->shift_x = 0.0;
@@ -27,6 +27,8 @@ void	fancy_name_maker(t_fractal *f)
 		f->name = "Mandelbrot";
 	else if (!(ft_strncmp(f->name, "-j", 2)))
 		f->name = "Julia";
+	else if (!(ft_strcmp(f->name, "-b")))
+		f->name = "Burning_Ship";
 }
 
 void	init_fractal(t_fractal *f)
