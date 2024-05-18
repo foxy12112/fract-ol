@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 17:44:11 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/17 16:56:11 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/18 16:21:38 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ t_comp	square_complex(t_comp z)
 	return (result);
 }
 
-void	info_message(char **argv)
+void	info_message(void)
 {
-	ft_printf("Usage: %s [OPTIONS]...\n", argv[0]);
+	ft_printf("Usage: fractol [OPTIONS]...\n");
 	ft_printf("\nOptions:\n");
 	ft_printf("  -j,   Generate Julia fractal.\n");
 	ft_printf("  you can specify the julia set using 2 more arguments,");

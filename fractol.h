@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/17 16:59:45 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/18 16:22:46 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,10 @@
 
 # include "MLX42/include/MLX42/MLX42.h"
 # include "main-libs/libs.h"
-# include <errno.h>
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
 
 typedef struct s_img
 {
@@ -94,7 +91,8 @@ void		z_and_y_init(t_comp *z);
 void		init_fractal(t_fractal *f);
 void		fancy_name_maker(t_fractal *f);
 void		event_init(t_fractal *f);
-void	julia_base_init(t_fractal *f);
+void		julia_base_init(t_fractal *f);
+int			mlx_argv_check(int argc, char **argv);
 
 //math
 t_comp		square_complex(t_comp z);
@@ -110,6 +108,6 @@ void		my_key_handler(mlx_key_data_t mkd, void *data);
 void		fractal_render(t_fractal *f);
 
 void		leakcheck(void);
-void		info_message(char **argv);
+void		info_message(void);
 
 #endif
