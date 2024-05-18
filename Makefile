@@ -26,6 +26,9 @@ endif
 
 all: MLX42 $(NAME)
 
+init:
+	@git submodule init && git submodule update && cd main-libs && git submodule init && git submodule update
+
 $(NAME): $(OBJS)
 	@cd main-libs && make --silent
 	@$(COMPILER) $(CFLAGS) -o $(NAME) $(OBJS) ./main-libs/libs.a ./MLX42/build/libmlx42.a $(MLX_FLAGS)
