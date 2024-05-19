@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:17:43 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/17 16:47:37 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/19 06:06:06 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	my_key_handler(mlx_key_data_t mkd, void *data)
 		f->max_iterations += 10;
 	if (mkd.key == MLX_KEY_KP_SUBTRACT)
 		f->max_iterations -= 10;
+	if (mkd.key == MLX_KEY_KP_EQUAL)
+		ft_printf("%d\n", f->max_iterations);
 	fractal_render(f);
 }
 
