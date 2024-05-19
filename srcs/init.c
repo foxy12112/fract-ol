@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:26:30 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/19 06:08:35 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/19 17:10:56 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	julia_base_init(t_fractal *f)
 
 int	mlx_argv_check(int argc, char **argv, t_fractal *f)
 {
-	if (argc == 1 || argc > 4 || argc == 3)
+	if (argc == 1 || argc == 3 || (argc > 2 && (!ft_strcmp(argv[1], "-m")
+				|| !ft_strcmp(argv[1], "-b"))))
 	{
 		info_message();
 		return (1);
@@ -67,10 +68,10 @@ int	mlx_argv_check(int argc, char **argv, t_fractal *f)
 		ft_printf("no custom values for julia, starting with default values\n");
 		julia_base_init(f);
 	}
-	if (argc == 4 && !ft_strcmp(argv[1], "-j"))
+	if (argc > 4 || argc < 2)
 	{
-		f->julia_x = atodbl(argv[2]);
-		f->julia_y = atodbl(argv[3]);
+		info_message();
+		return (1);
 	}
 	return (0);
 }

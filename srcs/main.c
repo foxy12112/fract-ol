@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 12:16:06 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/19 05:18:00 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/19 16:47:27 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int	main(int argc, char *argv[])
 	f.name = argv[1];
 	if (mlx_argv_check(argc, argv, &f) == 1)
 		return (1);
+	if (argc == 4 && !ft_strcmp(argv[1], "-j"))
+	{
+		f.julia_x = atodbl(argv[2]);
+		f.julia_y = atodbl(argv[3]);
+	}
 	atexit(leakcheck);
 	fancy_name_maker(&f);
 	init_fractal(&f);
