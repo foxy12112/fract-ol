@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:17:43 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/19 06:06:06 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/19 17:23:38 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	my_key_handler(mlx_key_data_t mkd, void *data)
 void	my_scroll_func(double xdelta, double ydelta, void *param)
 {
 	t_fractal	*f;
-	t_comp		*c;
 
 	(void)xdelta;
 	f = (t_fractal *)param;

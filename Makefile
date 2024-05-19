@@ -15,7 +15,7 @@ OBJS_DIR = objs/
 
 OBJS = $(SRCS:.c=.o)
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 ifeq ($(OS),Linux)
 	MLX_FLAGS = MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 else ifeq ($(OS),Darwin)

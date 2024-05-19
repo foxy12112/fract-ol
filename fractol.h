@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/19 05:17:48 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/19 17:23:16 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_comp
 
 // fractal sets
 void		up_down_burning_ship(int x, int y, t_fractal *f);
-static void	mandelbrot(int x, int y, t_fractal *f);
+void		mandelbrot(int x, int y, t_fractal *f);
 void		julia(int x, int y, t_fractal *f);
 
 // initialization
