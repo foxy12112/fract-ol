@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:26:30 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/18 16:22:28 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/19 06:08:35 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,28 @@ void	julia_base_init(t_fractal *f)
 	f->julia_y = 0.1889;
 }
 
-int	mlx_argv_check(int argc, char **argv)
+int	mlx_argv_check(int argc, char **argv, t_fractal *f)
 {
-	t_fractal	f;
-
-	if (!(ft_strcmp(argv[1], "-m") || ft_strcmp(argv[1], "-b")
-			|| ft_strcmp(argv[1], "-j")))
+	if (argc == 1 || argc > 4 || argc == 3)
 	{
 		info_message();
 		return (1);
 	}
-	if (argc == 1 || argc > 4)
+	if (!(ft_strcmp(argv[1], "-m") == 0 || ft_strcmp(argv[1], "-b") == 0
+			|| ft_strcmp(argv[1], "-j") == 0))
 	{
 		info_message();
 		return (1);
 	}
 	if (!ft_strcmp(argv[1], "-j") && argc == 2)
-		printf("no custom values for julia, proceeding with default values\n");
-	if (argc == 4 && ft_strcmp(f.name, "Julia"))
 	{
-		f.julia_x = atodbl(argv[2]);
-		f.julia_y = atodbl(argv[3]);
+		ft_printf("no custom values for julia, starting with default values\n");
+		julia_base_init(f);
 	}
-	if (argc == 2 && ft_strcmp(argv[1], "-j"))
-		julia_base_init(&f);
+	if (argc == 4 && !ft_strcmp(argv[1], "-j"))
+	{
+		f->julia_x = atodbl(argv[2]);
+		f->julia_y = atodbl(argv[3]);
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ldick <ldick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:09 by ldick             #+#    #+#             */
-/*   Updated: 2024/05/18 16:22:46 by ldick            ###   ########.fr       */
+/*   Updated: 2024/05/19 05:17:48 by ldick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void		init_fractal(t_fractal *f);
 void		fancy_name_maker(t_fractal *f);
 void		event_init(t_fractal *f);
 void		julia_base_init(t_fractal *f);
-int			mlx_argv_check(int argc, char **argv);
+int			mlx_argv_check(int argc, char **argv, t_fractal *f);
 
 //math
 t_comp		square_complex(t_comp z);
